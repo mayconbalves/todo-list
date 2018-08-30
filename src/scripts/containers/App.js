@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class App extends Component {
-  render() {
+  render () {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Todo List</h1>
+      <div className='App'>
+        <header className='App-header'>
+          <h1 className='App-title'>Todo List</h1>
         </header>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
