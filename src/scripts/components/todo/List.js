@@ -22,7 +22,7 @@ const TodoList = ({ list, handleDelete, handleDone, handlePending }) => {
           <th>
             Descrição
           </th>
-          <th>
+          <th className='fixe-width'>
             Ação
           </th>
         </tr>
