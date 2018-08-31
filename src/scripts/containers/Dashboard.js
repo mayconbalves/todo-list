@@ -6,9 +6,9 @@ class Dashboard extends Component {
     return (
       <div>
         <Menu />
-        <header>
-          <h1>Criei suas Tarefas</h1>
-        </header>
+        <div className='container'>
+          <h1>Crie suas Tarefas</h1>
+        </div>
       </div>
     )
   }
