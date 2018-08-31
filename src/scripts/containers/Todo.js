@@ -6,7 +6,7 @@ class Todo extends Component {
     return (
       <div>
         <Menu />
-        <h1>Todo</h1>
+        <h1>Tarefas</h1>
       </div>
     )
   }

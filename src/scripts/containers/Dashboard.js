@@ -7,7 +7,7 @@ class Dashboard extends Component {
       <div>
         <Menu />
         <header>
-          <h1>Criei suas Todo-lists</h1>
+          <h1>Criei suas Tarefas</h1>
         </header>
       </div>
     )

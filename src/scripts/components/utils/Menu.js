@@ -8,7 +8,7 @@ class Menu extends Component {
         <nav>
           <ul className='list'>
             <li><Link to='/'>Home</Link></li>
-            <li><Link to='/todo-list'>Todo-List</Link></li>
+            <li><Link to='/todo-list'>Tarefas</Link></li>
           </ul>
         </nav>
 
