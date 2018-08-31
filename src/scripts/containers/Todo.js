@@ -63,22 +63,24 @@ class Todo extends Component {
   render () {
     const { description, list } = this.state
     return (
-      <div>
+      <main>
         <Menu />
-        <h1>Tarefas</h1>
-        <TodoForm
-          description={description}
-          handleAdd={this.handleAdd}
-          handleChange={this.handleChange}
-        />
+          <div className='container'>
+            <h1 className='margin-top'>Tarefas</h1>
+            <TodoForm
+              description={description}
+              handleAdd={this.handleAdd}
+              handleChange={this.handleChange}
+            />
 
-        <TodoList
-          list={list}
-          handleDelete={this.handleDelete}
-          handleDone={this.handleDone}
-          handlePending={this.handlePending}
-        />
-      </div>
+            <TodoList
+              list={list}
+              handleDelete={this.handleDelete}
+              handleDone={this.handleDone}
+              handlePending={this.handlePending}
+            />
+          </div>
+      </main>
     )
   }
 }

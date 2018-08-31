@@ -14,9 +14,9 @@ class TodoForm extends Component {
 
     return (
       <form>
-        <div className='container'>
+        <div className='container margin-top-double'>
           <div className='row'>
-            <Col className='col-8'>
+            <Col className='col-6'>
               <input
                 id='description'
                 className='form-control'
@@ -25,7 +25,7 @@ class TodoForm extends Component {
                 value={description}
               />
             </Col>
-            <Col className='col-4' md={4}>
+            <Col className='col-4'>
               <button
                 type='button'
                 className='btn btn-primary'
