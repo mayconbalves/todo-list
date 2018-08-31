@@ -34,7 +34,7 @@ class Todo extends Component {
 
   handleAdd = () => {
     const description = this.state.description
-    axios.post(URL, {description})
+    axios.post(URL, {description, done: false })
       .then(resp => this.handleTodoList())
   }
 
