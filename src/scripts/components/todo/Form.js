@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import Col from '../utils/Col'
 
 class TodoForm extends Component {
   super (props) {
@@ -12,16 +13,16 @@ class TodoForm extends Component {
     return (
       <form>
         <div className='row'>
-          <div className='col'>
+          <Col xs={10} sm={10} md={10}>
             <input
               id='description'
               className='form-control'
               placeholder='Adicione uma tarefa'
             />
-          </div>
-          <div className='col'>
+          </Col>
+          <Col xs={2} sm={2} md={2}>
             <button type='button' className='btn btn-primary'>+</button>
-          </div>
+          </Col>
         </div>
       </form>
     )
