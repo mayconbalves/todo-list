@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import axios from 'axios'
 import Menu from '../components/utils/Menu'
 import TodoForm from '../components/todo/Form'
 import TodoList from '../components/todo/List'
+import * as todoActions from '../actions/todo'
 
 const apiKeyMlab = '6b7477mEkxRuqQhGgZwo0i2tbHnerl7a'
-const URL = `https://api.mlab.com/api/1/databases/maycon-todo-list/collections/todo-list?apiKey=${apiKeyMlab}`
 
 class Todo extends Component {
   constructor (props) {
@@ -14,18 +17,14 @@ class Todo extends Component {
     this.state = { description: '', list: [] }
   }
 
-  componentDidMount () {
+  componentWillMount () {
     this.handleTodoList()
   }
 
   handleTodoList = () => {
-    axios.get(URL)
-      .then(resp => this.setState({
-          ...this.state,
-          description: '',
-          list: resp.data
-        })
-      )
+    const { fetchTodoList } = this.props
+
+    fetchTodoList()
   }
 
   handleChange = (event) => {
@@ -33,8 +32,10 @@ class Todo extends Component {
   }
 
   handleAdd = () => {
+    const { fetchAddTodo } = this.props
     const description = this.state.description
-    axios.post(URL, {description, done: false })
+
+    fetchAddTodo(description)
       .then(resp => this.handleTodoList())
   }
 
@@ -61,14 +62,15 @@ class Todo extends Component {
   }
 
   render () {
-    const { description, list } = this.state
+    const { list } = this.props
+
     return (
       <main>
         <Menu />
           <div className='container'>
             <h1 className='margin-top'>Tarefas</h1>
             <TodoForm
-              description={description}
+              description={list.description}
               handleAdd={this.handleAdd}
               handleChange={this.handleChange}
             />
@@ -85,4 +87,25 @@ class Todo extends Component {
   }
 }
 
-export default Todo
+Todo.propTypes = {
+  description: PropTypes.string.isRequired,
+  fetchTodoList: PropTypes.func.isRequired,
+  fetchAddTodo: PropTypes.func.isRequired,
+  list: PropTypes.array
+}
+
+const mapStateToProps = ({ todoReducer }) => {
+  return {
+    list: todoReducer.list,
+    description: todoReducer.description
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators(todoActions, dispatch)
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Todo)

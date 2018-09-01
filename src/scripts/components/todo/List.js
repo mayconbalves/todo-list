@@ -15,6 +15,7 @@ const TodoList = ({ list, handleDelete, handleDone, handlePending }) => {
       />
     )
   }
+
   return (
     <table className='table margin-top-double container'>
       <thead>
