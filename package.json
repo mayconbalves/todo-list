@@ -21,6 +21,7 @@
     "react-scripts": "1.1.5",
     "redux": "^4.0.0",
     "redux-logger": "^3.0.6",
+    "redux-promise": "^0.6.0",
     "redux-thunk": "^2.3.0",
     "style-loader": "^0.23.0"
   },
@@ -29,5 +30,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "redux-multi": "^0.1.12"
   }
 }
