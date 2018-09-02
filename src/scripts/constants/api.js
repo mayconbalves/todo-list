@@ -1,4 +1,4 @@
-const apiKeyMlab = '6b7477mEkxRuqQhGgZwo0i2tbHnerl7a'
+export const apiKeyMlab = '6b7477mEkxRuqQhGgZwo0i2tbHnerl7a'
 const url = 'https://api.mlab.com/api/1/databases/maycon-todo-list/collections/todo-list'
 
 export default {

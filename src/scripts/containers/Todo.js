@@ -40,17 +40,18 @@ class Todo extends Component {
   }
 
   handleDelete = (list) => {
-    const id = list._id.$oid
-    const DELETE = `https://api.mlab.com/api/1/databases/maycon-todo-list/collections/todo-list/${id}?apiKey=${apiKeyMlab}`
-    axios.delete(DELETE)
+    const { fetchDeleteTodo } = this.props
+
+    fetchDeleteTodo(list)
       .then((resp) => this.handleTodoList())
   }
 
   handleDone = (list) => {
-    const id = list._id.$oid
-    const PUT = `https://api.mlab.com/api/1/databases/maycon-todo-list/collections/todo-list/${id}?apiKey=${apiKeyMlab}`
-    axios.put(PUT, { ...list, done: true })
-      .then(resp => this.handleTodoList())
+    const { fetchDoneTodo } = this.props
+    const description = this.state.description
+
+    fetchDoneTodo(list, description)
+      .then((resp) => this.handleTodoList())
 
   }
 
@@ -91,6 +92,8 @@ Todo.propTypes = {
   description: PropTypes.string.isRequired,
   fetchTodoList: PropTypes.func.isRequired,
   fetchAddTodo: PropTypes.func.isRequired,
+  fetchDeleteTodo: PropTypes.func.isRequired,
+  fetchDoneTodo: PropTypes.func.isRequired,
   list: PropTypes.array
 }
 
