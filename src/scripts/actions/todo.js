@@ -1,6 +1,7 @@
 import {
   ADD_TODO_SUCCESS,
   TODO_LIST_SUCCESS,
+  TODO_LIST_ERROR,
   DELETE_TODO_SUCCESS,
   DONE_TODO_SUCCESS
 } from '../constants/actionTypes'
@@ -8,12 +9,35 @@ import {
 import axios from 'axios'
 import API_URL, { apiKeyMlab } from '../constants/api'
 
-export const fetchTodoList = () => {
-  const request = axios.get(API_URL.TODO_LIST)
+const onFetchSuccess = (response, dispatch) => {
+  if (response.data) {
+    dispatch(todoListSuccess(response.data))
+  }
+}
+
+const onFetchError = (error, dispatch) => {
+  dispatch(todoListError(error))
+}
+
+
+const todoListSuccess = data => {
   return {
     type: TODO_LIST_SUCCESS,
-    payload: request
+    payload: data
   }
+}
+
+const todoListError = error => {
+  return {
+    type: TODO_LIST_ERROR,
+    payload: error
+  }
+}
+
+export const fetchTodoList = () => dispatch => {
+  axios.get(API_URL.TODO_LIST)
+    .then(response => onFetchSuccess(response, dispatch))
+    .catch(error => onFetchError(error, dispatch))
 }
 
 export const fetchAddTodo = description => {

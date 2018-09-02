@@ -15,7 +15,7 @@ export default function todo (state = initialState, action) {
     case TODO_LIST_SUCCESS:
       return {
         ...state,
-        list: action.payload.data,
+        list: action.payload,
         error: null
       }
     case TODO_LIST_ERROR:

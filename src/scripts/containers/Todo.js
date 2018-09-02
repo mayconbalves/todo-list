@@ -61,7 +61,6 @@ class Todo extends Component {
 
   render () {
     const { list } = this.props
-
     return (
       <main>
         <Menu />
@@ -86,7 +85,6 @@ class Todo extends Component {
 }
 
 Todo.propTypes = {
-  description: PropTypes.string.isRequired,
   fetchTodoList: PropTypes.func.isRequired,
   fetchAddTodo: PropTypes.func.isRequired,
   fetchDeleteTodo: PropTypes.func.isRequired,
