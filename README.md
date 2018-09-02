@@ -18,3 +18,8 @@ npm start or yarn start
 npm test or yarn test
 
 ```
+
+### issues
+
+- [Issue 1](https://github.com/mayconbalves/todo-list/issues/1)
+- [Issue 2](https://github.com/mayconbalves/todo-list/issues/2)
