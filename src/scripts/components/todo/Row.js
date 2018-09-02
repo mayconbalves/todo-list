@@ -51,13 +51,6 @@ const TodoRow = props => {
               Refazer
           </button>
         }
-
-        <button
-          type='button'
-          className='btn btn-info btn-margin'
-          onClick={() => handleDelete(list)}>
-            Editar
-        </button>
       </td>
     </tr>
   )

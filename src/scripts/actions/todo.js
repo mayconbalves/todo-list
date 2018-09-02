@@ -41,3 +41,12 @@ export const fetchDoneTodo = (list, description) => {
     payload: request
   }
 }
+
+export const fetchPendingTodo = list => {
+  const id = list._id.$oid
+  const request = axios.put(`${API_URL.URL}/${id}?apiKey=${apiKeyMlab}`, { ...list, done: false })
+  return {
+    type: DONE_TODO_SUCCESS,
+    payload: request
+  }
+}

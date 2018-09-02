@@ -2,13 +2,11 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import axios from 'axios'
+import * as todoActions from '../actions/todo'
+
 import Menu from '../components/utils/Menu'
 import TodoForm from '../components/todo/Form'
 import TodoList from '../components/todo/List'
-import * as todoActions from '../actions/todo'
-
-const apiKeyMlab = '6b7477mEkxRuqQhGgZwo0i2tbHnerl7a'
 
 class Todo extends Component {
   constructor (props) {
@@ -52,13 +50,12 @@ class Todo extends Component {
 
     fetchDoneTodo(list, description)
       .then((resp) => this.handleTodoList())
-
   }
 
   handlePending = (list) => {
-    const id = list._id.$oid
-    const PUT = `https://api.mlab.com/api/1/databases/maycon-todo-list/collections/todo-list/${id}?apiKey=${apiKeyMlab}`
-    axios.put(PUT, { ...list, done: false })
+    const { fetchPendingTodo } = this.props
+
+    fetchPendingTodo(list)
       .then(resp => this.handleTodoList())
   }
 
@@ -94,6 +91,7 @@ Todo.propTypes = {
   fetchAddTodo: PropTypes.func.isRequired,
   fetchDeleteTodo: PropTypes.func.isRequired,
   fetchDoneTodo: PropTypes.func.isRequired,
+  fetchPendingTodo: PropTypes.func.isRequired,
   list: PropTypes.array
 }
 
