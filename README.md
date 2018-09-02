@@ -1,5 +1,10 @@
 # React/Redux TodoList
 
+
+![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
+[![Javascript](https://badges.frapsoft.com/javascript/code/javascript.svg?v=101)](https://github.com/ellerbrock/javascript-badges/)
+[![GitHub release](https://img.shields.io/github/release/bevacqua/awesome-badges.svg)](https://github.com/bevacqua/awesome-badges)
+
 ## Demo
 https://www.useloom.com/share/0589688dc97146c6abf85db758254873
 
