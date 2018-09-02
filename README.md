@@ -19,6 +19,10 @@ npm test or yarn test
 
 ```
 
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
 ### issues
 
 - [Issue 1](https://github.com/mayconbalves/todo-list/issues/1)
