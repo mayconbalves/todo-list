@@ -9,17 +9,6 @@ import {
 import axios from 'axios'
 import API_URL, { apiKeyMlab } from '../constants/api'
 
-const onFetchSuccess = (response, dispatch) => {
-  if (response.data) {
-    dispatch(todoListSuccess(response.data))
-  }
-}
-
-const onFetchError = (error, dispatch) => {
-  dispatch(todoListError(error))
-}
-
-
 const todoListSuccess = data => {
   return {
     type: TODO_LIST_SUCCESS,
@@ -36,8 +25,8 @@ const todoListError = error => {
 
 export const fetchTodoList = () => dispatch => {
   axios.get(API_URL.TODO_LIST)
-    .then(response => onFetchSuccess(response, dispatch))
-    .catch(error => onFetchError(error, dispatch))
+    .then(response => dispatch(todoListSuccess(response.data, dispatch)))
+    .catch(error => dispatch(todoListError(error, dispatch)))
 }
 
 export const fetchAddTodo = description => {
