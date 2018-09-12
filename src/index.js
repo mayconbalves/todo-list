@@ -11,7 +11,7 @@ import registerServiceWorker from './scripts/core/registerServiceWorker'
 import './styles/main.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-const devTools = window._REDUX_DEVTOOLS_EXTENSION_ && window.window._REDUX_DEVTOOLS_EXTENSION_()
+const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 
 const store = applyMiddleware(thunk, multi, promise)(createStore)(reducers, devTools)
 
