@@ -9,19 +9,15 @@ import {
 import axios from 'axios'
 import API_URL, { apiKeyMlab } from '../constants/api'
 
-const todoListSuccess = data => {
-  return {
-    type: TODO_LIST_SUCCESS,
-    payload: data
-  }
-}
+const todoListSuccess = data => ({
+  type: TODO_LIST_SUCCESS,
+  payload: data
+})
 
-const todoListError = error => {
-  return {
+const todoListError = error => ({
     type: TODO_LIST_ERROR,
     payload: error
-  }
-}
+})
 
 export const fetchTodoList = () => dispatch => {
   axios.get(API_URL.TODO_LIST)
@@ -37,12 +33,10 @@ export const fetchAddTodo = description => {
   }
 }
 
-const deleteTodoSuccess = data => {
-  return {
-    type: DELETE_TODO_SUCCESS,
-    payload: data
-  }
-}
+const deleteTodoSuccess = data => ({
+  type: DELETE_TODO_SUCCESS,
+  payload: data
+})
 
 export const fetchDeleteTodo = list => dispatch => {
   const id = list._id.$oid
