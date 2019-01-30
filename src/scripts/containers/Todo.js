@@ -34,14 +34,14 @@ class Todo extends Component {
     const description = this.state.description
 
     fetchAddTodo(description)
-      .then(resp => this.handleTodoList())
+      .then(() => this.handleTodoList())
   }
 
   handleDelete = (list) => {
     const { fetchDeleteTodo } = this.props
 
     fetchDeleteTodo(list)
-      .then((resp) => this.handleTodoList())
+      .then(() => this.handleTodoList())
   }
 
   handleDone = (list) => {
@@ -49,14 +49,14 @@ class Todo extends Component {
     const description = this.state.description
 
     fetchDoneTodo(list, description)
-      .then((resp) => this.handleTodoList())
+      .then(() => this.handleTodoList())
   }
 
   handlePending = (list) => {
     const { fetchPendingTodo } = this.props
 
     fetchPendingTodo(list)
-      .then(resp => this.handleTodoList())
+      .then(() => this.handleTodoList())
   }
 
   render () {
