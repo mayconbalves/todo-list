@@ -6,11 +6,23 @@ class TodoForm extends Component {
   constructor (props) {
     super(props)
 
-    this.state = { show: false }
+    this.state = { description: '' }
+  }
+
+  handleChange = event => {
+    this.setState({ description: event.target.value })
+  }
+
+  handleConfirm = () => {
+    const { handleAdd } = this.props
+    const { description } = this.state
+
+    handleAdd(description)
+    this.setState({ description: '' })
   }
 
   render () {
-    const { description, handleAdd, handleChange } = this.props
+    const { description } = this.state
 
     return (
       <form>
@@ -20,7 +32,7 @@ class TodoForm extends Component {
               <input
                 id='description'
                 className='form-control'
-                onChange={handleChange}
+                onChange={this.handleChange}
                 placeholder='Adicione uma tarefa'
                 value={description}
               />
@@ -29,7 +41,7 @@ class TodoForm extends Component {
               <button
                 type='button'
                 className='btn btn-primary'
-                onClick={handleAdd}>
+                onClick={this.handleConfirm}>
                 +
               </button>
             </Col>
@@ -41,9 +53,7 @@ class TodoForm extends Component {
 }
 
 TodoForm.propTypes = {
-  description: PropTypes.string,
-  handleAdd: PropTypes.func.isRequired,
-  handleChange: PropTypes.func.isRequired
+  handleAdd: PropTypes.func.isRequired
 }
 
 export default TodoForm
