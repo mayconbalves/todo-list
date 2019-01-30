@@ -41,7 +41,6 @@ class Todo extends Component {
     const { fetchDeleteTodo } = this.props
 
     fetchDeleteTodo(list)
-      .then(() => this.handleTodoList())
   }
 
   handleDone = (list) => {

@@ -37,13 +37,18 @@ export const fetchAddTodo = description => {
   }
 }
 
-export const fetchDeleteTodo = list => {
-  const id = list._id.$oid
-  const request = axios.delete(`${API_URL.URL}/${id}?apiKey=${apiKeyMlab}`)
+const deleteTodoSuccess = data => {
   return {
     type: DELETE_TODO_SUCCESS,
-    payload: request
+    payload: data
   }
+}
+
+export const fetchDeleteTodo = list => dispatch => {
+  const id = list._id.$oid
+  axios.delete(`${API_URL.URL}/${id}?apiKey=${apiKeyMlab}`)
+    .then(response => dispatch(deleteTodoSuccess(response.data)))
+    .then(() => dispatch(fetchTodoList()))
 }
 
 export const fetchDoneTodo = (list, description) => {
