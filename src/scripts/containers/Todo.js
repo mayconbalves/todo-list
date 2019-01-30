@@ -29,9 +29,8 @@ class Todo extends Component {
     this.setState({...this.state, description: event.target.value })
   }
 
-  handleAdd = () => {
+  handleAdd = description => {
     const { fetchAddTodo } = this.props
-    const description = this.state.description
 
     fetchAddTodo(description)
       .then(() => this.handleTodoList())
