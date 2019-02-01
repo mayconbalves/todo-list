@@ -25,7 +25,7 @@ class Todo extends Component {
     fetchTodoList()
   }
 
-  handleChange = (event) => {
+  handleChange = event => {
     this.setState({...this.state, description: event.target.value })
   }
 
@@ -36,13 +36,13 @@ class Todo extends Component {
       .then(() => this.handleTodoList())
   }
 
-  handleDelete = (list) => {
+  handleDelete = list => {
     const { fetchDeleteTodo } = this.props
 
     fetchDeleteTodo(list)
   }
 
-  handleDone = (list) => {
+  handleDone = list => {
     const { fetchDoneTodo } = this.props
     const description = this.state.description
 
@@ -50,7 +50,7 @@ class Todo extends Component {
       .then(() => this.handleTodoList())
   }
 
-  handlePending = (list) => {
+  handlePending = list => {
     const { fetchPendingTodo } = this.props
 
     fetchPendingTodo(list)
@@ -91,12 +91,10 @@ Todo.propTypes = {
   list: PropTypes.array
 }
 
-const mapStateToProps = ({ todoReducer }) => {
-  return {
-    list: todoReducer.list,
-    description: todoReducer.description
-  }
-}
+const mapStateToProps = ({ todoReducer }) => ({
+  list: todoReducer.list,
+  description: todoReducer.description
+})
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(todoActions, dispatch)
