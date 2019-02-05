@@ -1,8 +1,9 @@
 import {
   ADD_TODO_SUCCESS,
+  DELETE_TODO_ERROR,
+  DELETE_TODO_SUCCESS,
   TODO_LIST_SUCCESS,
   TODO_LIST_ERROR,
-  DELETE_TODO_SUCCESS,
   DONE_TODO_SUCCESS
 } from '../constants/actionTypes'
 
@@ -38,10 +39,16 @@ const deleteTodoSuccess = data => ({
   payload: data
 })
 
+const deleteTodoError = error => ({
+  type: DELETE_TODO_ERROR,
+  payload: error
+})
+
 export const fetchDeleteTodo = list => dispatch => {
   const id = list._id.$oid
   axios.delete(`${API_URL.URL}/${id}?apiKey=${apiKeyMlab}`)
     .then(response => dispatch(deleteTodoSuccess(response.data)))
+    .catch(error => dispatch(deleteTodoError(error)))
     .then(() => dispatch(fetchTodoList()))
 }
 
