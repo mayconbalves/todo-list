@@ -4,7 +4,8 @@ import {
   DELETE_TODO_SUCCESS,
   TODO_LIST_SUCCESS,
   TODO_LIST_ERROR,
-  DONE_TODO_SUCCESS
+  DONE_TODO_SUCCESS,
+  DONE_TODO_ERROR
 } from '../constants/actionTypes'
 
 import axios from 'axios'
@@ -52,13 +53,22 @@ export const fetchDeleteTodo = list => dispatch => {
     .then(() => dispatch(fetchTodoList()))
 }
 
-export const fetchDoneTodo = (list, description) => {
+const doneTodoSuccess = data => ({
+  type: DONE_TODO_SUCCESS,
+  payload: data
+})
+
+const doneTodoError = error => ({
+  type: DONE_TODO_ERROR,
+  payload: error
+})
+
+export const fetchDoneTodo = (list, description) => dispatch => {
   const id = list._id.$oid
-  const request = axios.put(`${API_URL.URL}/${id}?apiKey=${apiKeyMlab}`, { description, done: true })
-  return {
-    type: DONE_TODO_SUCCESS,
-    payload: request
-  }
+  axios.put(`${API_URL.URL}/${id}?apiKey=${apiKeyMlab}`, { description })
+    .then(response => dispatch(doneTodoSuccess(response.data)))
+    .catch(error => dispatch(doneTodoError(error)))
+    .then(() => dispatch(fetchTodoList()))
 }
 
 export const fetchPendingTodo = list => {
