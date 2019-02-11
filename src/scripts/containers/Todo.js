@@ -47,7 +47,6 @@ class Todo extends Component {
     const description = this.state.description
 
     fetchDoneTodo(list, description)
-      .then(() => this.handleTodoList())
   }
 
   handlePending = list => {
