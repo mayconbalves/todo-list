@@ -1,7 +1,12 @@
 const Product = require('../models/todo.model')
 
-exports.test = function (req, res) {
-  res.send('Greetings from the Test controller!')
+exports.todo_list = function (req, res) {
+  Product.find(req.params, function(err, product) {
+    if(err) {
+      return next(err)
+    }
+    res.send(product)
+  })
 }
 
 exports.todo_create = function (req, res) {
