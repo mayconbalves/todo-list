@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-let ProductSchema = new Schema({
-  task: { type: String, required: true, max: 100 }
+let TodoSchema = new Schema({
+  description: { type: String, required: true, max: 100 }
 })
 
-module.exports = mongoose.model('Product', ProductSchema)
+module.exports = mongoose.model('Todo', TodoSchema)
