@@ -22,13 +22,13 @@ const todoListError = error => ({
 })
 
 export const fetchTodoList = () => dispatch => {
-  axios.get(API_URL.TODO_LIST)
+  axios.get('http://localhost:8080/todos/list')
     .then(response => dispatch(todoListSuccess(response.data, dispatch)))
     .catch(error => dispatch(todoListError(error, dispatch)))
 }
 
 export const fetchAddTodo = description => {
-  const request = axios.post(API_URL.TODO_LIST, { description, done: false })
+  const request = axios.post('http://localhost:8080/todos/create', { description, done: false })
   return {
     type: ADD_TODO_SUCCESS,
     payload: request
