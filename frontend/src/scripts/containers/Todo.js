@@ -15,7 +15,7 @@ class Todo extends Component {
     this.state = { description: '', list: [] }
   }
 
-  componentWillMount () {
+  componentDidMount () {
     this.handleTodoList()
   }
 
@@ -57,14 +57,15 @@ class Todo extends Component {
   }
 
   render () {
-    const { list } = this.props
+    const { description } = this.props
+    const list = description || []
     return (
       <main>
         <Menu />
           <div className='container'>
             <h1 className='margin-top'>Tarefas</h1>
             <TodoForm
-              description={list.description}
+              description={list}
               handleAdd={this.handleAdd}
               handleChange={this.handleChange}
             />
@@ -91,7 +92,6 @@ Todo.propTypes = {
 }
 
 const mapStateToProps = ({ todoReducer }) => ({
-  list: todoReducer.list,
   description: todoReducer.description
 })
 
