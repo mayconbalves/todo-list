@@ -13,6 +13,7 @@ exports.todo_create = function (req, res) {
   let product = new Product(
       {
         description: req.body.description,
+        done: req.body.done
       }
   )
 
