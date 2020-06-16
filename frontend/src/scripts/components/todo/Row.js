@@ -18,7 +18,7 @@ const TodoRow = props => {
         <button
           type='button'
           className='btn btn-danger btn-margin'
-          onClick={() => handleDelete(list)}>
+          onClick={() => handleDelete(list.description)}>
             Apagar
         </button>
 
@@ -57,7 +57,7 @@ const TodoRow = props => {
 }
 
 TodoRow.propTypes = {
-  list: PropTypes.object.isRequired,
+  list: PropTypes.string.isRequired,
   item: PropTypes.number.isRequired,
   handleDelete: PropTypes.func.isRequired,
   handleDone: PropTypes.func.isRequired,
