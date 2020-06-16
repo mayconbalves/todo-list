@@ -6,7 +6,6 @@ import {
 
 const initialState = {
   description: '',
-  list: [],
   error: null
 }
 
@@ -15,18 +14,18 @@ export default function todo (state = initialState, action) {
     case TODO_LIST_SUCCESS:
       return {
         ...state,
-        list: action.payload,
+        description: action.payload,
         error: null
       }
     case TODO_LIST_ERROR:
       return {
-        list: [],
+        description: [],
         error: action.payload
       }
     case ADD_TODO_SUCCESS:
       return {
         ...state,
-        description: '',
+        description: action.payload,
         error: null
       }
     default:
