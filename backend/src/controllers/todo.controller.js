@@ -1,28 +1,20 @@
 const Product = require('../models/todo.model')
 
-exports.todo_list = function (req, res) {
-  Product.find(req.params, function(err, product) {
-    if(err) {
-      return next(err)
-    }
-    res.send(product)
-  })
-}
+module.exports = {
+  async todo_list(req, res) {
+    const product = await Product.find({}).sort('-createdAt-')
+    return res.json(product)
+  },
 
-exports.todo_create = function (req, res) {
-  let product = new Product(
-      {
-        description: req.body.description,
-        done: req.body.done
-      }
-  )
-
-  product.save(function (err) {
-      if (err) {
-          return next(err)
-      }
-      res.send('Product Created successfully')
-  })
+  async todo_create(req, res) {
+    const product = await Product.create(
+        {
+          description: req.body.description,
+          done: req.body.done
+        }
+    )
+    return res.json(product)
+  }
 }
 
 exports.product_details = function (req, res) {
