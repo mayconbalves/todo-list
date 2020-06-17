@@ -10,6 +10,6 @@ router.get('/list', todo_controller.todo_list)
 // router.get('/:id', todo_controller.product_details)
 router.post('/create', todo_controller.todo_create)
 // router.put('/:id/update', todo_controller.product_update)
-// router.delete('/:id/delete', todo_controller.product_delete)
+router.delete('/:id/delete', todo_controller.todo_delete)
 
 module.exports = router
