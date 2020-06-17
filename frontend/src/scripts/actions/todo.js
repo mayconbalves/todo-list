@@ -46,9 +46,8 @@ const deleteTodoError = error => ({
   payload: error
 })
 
-export const fetchDeleteTodo = list => dispatch => {
-  const id = list._id.$oid
-  axios.delete(`${API_URL.URL}/${id}?apiKey=${apiKeyMlab}`)
+export const fetchDeleteTodo = _id => dispatch => {
+  axios.delete(`http://localhost:8080/todos/${_id}/delete`)
     .then(response => dispatch(deleteTodoSuccess(response.data)))
     .catch(error => dispatch(deleteTodoError(error)))
     .then(() => dispatch(fetchTodoList()))
