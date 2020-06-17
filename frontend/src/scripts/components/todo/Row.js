@@ -18,7 +18,7 @@ const TodoRow = props => {
         <button
           type='button'
           className='btn btn-danger btn-margin'
-          onClick={() => handleDelete(list.description)}>
+          onClick={() => handleDelete(list._id)}>
             Apagar
         </button>
 
