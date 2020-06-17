@@ -29,6 +29,7 @@ export const fetchTodoList = () => dispatch => {
 
 export const fetchAddTodo = description => {
   const request = axios.post('http://localhost:8080/todos/create', { description, done: false })
+
   return {
     type: ADD_TODO_SUCCESS,
     payload: request

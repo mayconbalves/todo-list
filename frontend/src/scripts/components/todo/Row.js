@@ -57,7 +57,7 @@ const TodoRow = props => {
 }
 
 TodoRow.propTypes = {
-  list: PropTypes.string.isRequired,
+  list: PropTypes.object.isRequired,
   item: PropTypes.number.isRequired,
   handleDelete: PropTypes.func.isRequired,
   handleDone: PropTypes.func.isRequired,
