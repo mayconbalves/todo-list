@@ -32,6 +32,7 @@ export const fetchAddTodo = description => dispatch => {
   axios.post(`${API.URL}/create`, { description, done: false })
     .then(respomse => dispatch(addTodoSuccess(respomse.data, dispatch)))
     .catch(error => dispatch(addTodoError(error)))
+    .then(() => dispatch(fetchTodoList()))
 }
 
 const addTodoSuccess = data => ({
@@ -44,6 +45,13 @@ const addTodoError = error => ({
   payload: error
 })
 
+export const fetchDeleteTodo = _id => dispatch => {
+  axios.delete(`${API.URL}/${_id}/delete`)
+    .then(response => dispatch(deleteTodoSuccess(response.data)))
+    .catch(error => dispatch(deleteTodoError(error)))
+    .then(() => dispatch(fetchTodoList()))
+}
+
 const deleteTodoSuccess = data => ({
   type: DELETE_TODO_SUCCESS,
   payload: data
@@ -53,13 +61,6 @@ const deleteTodoError = error => ({
   type: DELETE_TODO_ERROR,
   payload: error
 })
-
-export const fetchDeleteTodo = _id => dispatch => {
-  axios.delete(`${API.URL}/${_id}/delete`)
-    .then(response => dispatch(deleteTodoSuccess(response.data)))
-    .catch(error => dispatch(deleteTodoError(error)))
-    .then(() => dispatch(fetchTodoList()))
-}
 
 const doneTodoSuccess = data => ({
   type: DONE_TODO_SUCCESS,

@@ -12,39 +12,28 @@ class Todo extends Component {
   constructor (props) {
     super (props)
 
-    this.state = { description: '', list: [] }
+    this.state = { description: '' }
   }
 
   componentDidMount () {
     this.handleTodoList()
   }
 
-  handleTodoList = () => {
-    const { fetchTodoList } = this.props
+  handleTodoList = () =>
+    this.props.fetchTodoList()
 
-    fetchTodoList()
-  }
-
-  handleChange = event => {
+  handleChange = event =>
     this.setState({...this.state, description: event.target.value })
-  }
 
-  handleAdd = description => {
-    const { fetchAddTodo } = this.props
+  handleAdd = description =>
+    this.props.fetchAddTodo(description)
 
-    fetchAddTodo(description)
-      .then(() => this.handleTodoList())
-  }
-
-  handleDelete = list => {
-    const { fetchDeleteTodo } = this.props
-
-    fetchDeleteTodo(list)
-  }
+  handleDelete = list =>
+    this.props.fetchDeleteTodo(list)
 
   handleDone = list => {
     const { fetchDoneTodo } = this.props
-    const description = this.state.description
+    const { description } = this.state
 
     fetchDoneTodo(list, description)
   }
