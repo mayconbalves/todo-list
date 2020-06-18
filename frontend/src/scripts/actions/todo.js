@@ -9,7 +9,7 @@ import {
 } from '../constants/actionTypes'
 
 import axios from 'axios'
-import API_URL, { apiKeyMlab } from '../constants/api'
+import API from '../constants/api'
 
 const todoListSuccess = data => ({
   type: TODO_LIST_SUCCESS,
@@ -22,13 +22,13 @@ const todoListError = error => ({
 })
 
 export const fetchTodoList = () => dispatch => {
-  axios.get('http://localhost:8080/todos/list')
+  axios.get(`${API.URL}/list`)
     .then(response => dispatch(todoListSuccess(response.data, dispatch)))
     .catch(error => dispatch(todoListError(error, dispatch)))
 }
 
 export const fetchAddTodo = description => {
-  const request = axios.post('http://localhost:8080/todos/create', { description, done: false })
+  const request = axios.post(`${API.URL}/create`, { description, done: false })
 
   return {
     type: ADD_TODO_SUCCESS,
@@ -47,7 +47,7 @@ const deleteTodoError = error => ({
 })
 
 export const fetchDeleteTodo = _id => dispatch => {
-  axios.delete(`http://localhost:8080/todos/${_id}/delete`)
+  axios.delete(`${API.URL}/${_id}/delete`)
     .then(response => dispatch(deleteTodoSuccess(response.data)))
     .catch(error => dispatch(deleteTodoError(error)))
     .then(() => dispatch(fetchTodoList()))
