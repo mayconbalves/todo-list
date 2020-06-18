@@ -1,8 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const TodoRow = props => {
-  const { list, item, handleDelete, handleDone, handlePending } = props
+const TodoRow = ({ list, item, handleDelete, handleDone, handlePending }) => {
   return (
     <tr className='clickable'id={item} key={item}>
       {
