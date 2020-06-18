@@ -1,5 +1,6 @@
 import {
   ADD_TODO_SUCCESS,
+  ADD_TODO_ERROR,
   DELETE_TODO_ERROR,
   DELETE_TODO_SUCCESS,
   TODO_LIST_SUCCESS,
@@ -11,6 +12,12 @@ import {
 import axios from 'axios'
 import API from '../constants/api'
 
+export const fetchTodoList = () => dispatch => {
+  axios.get(`${API.URL}/list`)
+    .then(response => dispatch(todoListSuccess(response.data, dispatch)))
+    .catch(error => dispatch(todoListError(error)))
+}
+
 const todoListSuccess = data => ({
   type: TODO_LIST_SUCCESS,
   payload: data
@@ -21,20 +28,21 @@ const todoListError = error => ({
     payload: error
 })
 
-export const fetchTodoList = () => dispatch => {
-  axios.get(`${API.URL}/list`)
-    .then(response => dispatch(todoListSuccess(response.data, dispatch)))
-    .catch(error => dispatch(todoListError(error, dispatch)))
+export const fetchAddTodo = description => dispatch => {
+  axios.post(`${API.URL}/create`, { description, done: false })
+    .then(respomse => dispatch(addTodoSuccess(respomse.data, dispatch)))
+    .catch(error => dispatch(addTodoError(error)))
 }
 
-export const fetchAddTodo = description => {
-  const request = axios.post(`${API.URL}/create`, { description, done: false })
+const addTodoSuccess = data => ({
+  type: ADD_TODO_SUCCESS,
+  payload: data
+})
 
-  return {
-    type: ADD_TODO_SUCCESS,
-    payload: request
-  }
-}
+const addTodoError = error => ({
+  type: ADD_TODO_ERROR,
+  payload: error
+})
 
 const deleteTodoSuccess = data => ({
   type: DELETE_TODO_SUCCESS,
