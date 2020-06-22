@@ -16,8 +16,14 @@ module.exports = {
     return res.json(product)
   },
 
-  async todo_delete (req, res) {
+  async todo_delete(req, res) {
     const product = await Product.findByIdAndRemove(req.params.id)
+    return res.json(product)
+  },
+
+  async todo_update(req, res) {
+    const product = await Product.findByIdAndUpdate(req.params.id, {$set: req.body})
+
     return res.json(product)
   }
 }
@@ -26,12 +32,5 @@ exports.product_details = function (req, res) {
   Product.findById(req.params.id, function (err, product) {
       if (err) return next(err)
       res.send(product)
-  })
-}
-
-exports.product_update = function (req, res) {
-  Product.findByIdAndUpdate(req.params.id, {$set: req.body}, function (err, product) {
-      if (err) return next(err)
-      res.send('Product udpated.')
   })
 }
