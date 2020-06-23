@@ -27,10 +27,3 @@ module.exports = {
     return res.json(product)
   }
 }
-
-exports.product_details = function (req, res) {
-  Todo.findById(req.params.id, function (err, product) {
-      if (err) return next(err)
-      res.send(product)
-  })
-}
