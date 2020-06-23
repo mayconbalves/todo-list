@@ -1,3 +1,5 @@
+/* eslint-disable react/no-access-state-in-setstate */
+/* eslint-disable react/forbid-prop-types */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -69,11 +71,11 @@ Todo.propTypes = {
 	fetchDeleteTodo: PropTypes.func.isRequired,
 	fetchDoneTodo: PropTypes.func.isRequired,
 	fetchPendingTodo: PropTypes.func.isRequired,
-	list: PropTypes.array
+	description: PropTypes.array,
 }
 
 const mapStateToProps = ({ todoReducer }) => ({
-	description: todoReducer.description
+	description: todoReducer.description,
 })
 
 const mapDispatchToProps = (dispatch) => {
