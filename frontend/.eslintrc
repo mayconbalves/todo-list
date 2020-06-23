@@ -5,7 +5,7 @@
     "allowImportExportEverywhere": false,
     "codeFrame": false
   },
-  "extends": ["airbnb", "prettier"],
+  "extends": ["airbnb", "prettier", "plugin:react/recommended"],
   "env": {
     "browser": true,
     "jest": true
@@ -17,6 +17,8 @@
     "react/prop-types": ["warn"],
     "no-return-assign": ["off"],
     "react/destructuring-assignment": ["never"],
-    "indent": ["error", "tab"]
+    "indent": ["error", "tab"],
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error"
   }
 }
