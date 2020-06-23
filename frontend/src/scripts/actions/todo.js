@@ -6,7 +6,9 @@ import {
   TODO_LIST_SUCCESS,
   TODO_LIST_ERROR,
   DONE_TODO_SUCCESS,
-  DONE_TODO_ERROR
+  DONE_TODO_ERROR,
+  PENDING_TODO_SUCCESS,
+  PENDING_TODO_ERROR
 } from '../constants/actionTypes'
 
 import axios from 'axios'
@@ -62,6 +64,14 @@ const deleteTodoError = error => ({
   payload: error
 })
 
+export const fetchDoneTodo = list => dispatch => {
+  const _id = list._id
+  axios.put(`${API.URL}/${_id}/update`, { done: true })
+    .then(response => dispatch(doneTodoSuccess(response.data)))
+    .catch(error => dispatch(doneTodoError(error)))
+    .then(() => dispatch(fetchTodoList()))
+}
+
 const doneTodoSuccess = data => ({
   type: DONE_TODO_SUCCESS,
   payload: data
@@ -72,19 +82,20 @@ const doneTodoError = error => ({
   payload: error
 })
 
-export const fetchDoneTodo = (list, description) => dispatch => {
-  const id = list._id.$oid
-  axios.put(`${API_URL.URL}/${id}?apiKey=${apiKeyMlab}`, { description })
-    .then(response => dispatch(doneTodoSuccess(response.data)))
-    .catch(error => dispatch(doneTodoError(error)))
+export const fetchPendingTodo = list => dispatch => {
+  const _id = list._id
+  axios.put(`${API.URL}/${_id}/update`, { done: false })
+    .then(response => dispatch(pendingTodoSuccess(response.data)))
+    .catch(error => dispatch(pendingTodoError(error)))
     .then(() => dispatch(fetchTodoList()))
 }
 
-export const fetchPendingTodo = list => {
-  const id = list._id.$oid
-  const request = axios.put(`${API_URL.URL}/${id}?apiKey=${apiKeyMlab}`, { ...list, done: false })
-  return {
-    type: DONE_TODO_SUCCESS,
-    payload: request
-  }
-}
+const pendingTodoSuccess = data => ({
+  type: PENDING_TODO_SUCCESS,
+  payload: data
+})
+
+const pendingTodoError = error => ({
+  type: PENDING_TODO_ERROR,
+  payload: error
+})
