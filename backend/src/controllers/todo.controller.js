@@ -1,4 +1,4 @@
-const Product = require('../models/todo.model')
+const Todo = require('../models/todo.model')
 
 module.exports = {
   async todo_list(req, res) {
@@ -29,7 +29,7 @@ module.exports = {
 }
 
 exports.product_details = function (req, res) {
-  Product.findById(req.params.id, function (err, product) {
+  Todo.findById(req.params.id, function (err, product) {
       if (err) return next(err)
       res.send(product)
   })
