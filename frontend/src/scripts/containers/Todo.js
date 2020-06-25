@@ -71,7 +71,10 @@ Todo.propTypes = {
 	fetchDeleteTodo: PropTypes.func.isRequired,
 	fetchDoneTodo: PropTypes.func.isRequired,
 	fetchPendingTodo: PropTypes.func.isRequired,
-	description: PropTypes.array,
+	description: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.string
+  ]),
 }
 
 const mapStateToProps = ({ todoReducer }) => ({

@@ -32,24 +32,8 @@
 		"test": "react-scripts test --env=jsdom",
 		"eject": "react-scripts eject"
 	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "lint-staged"
-		}
-	},
-	"lint-staged": {
-		"src/**/*.{js,jsx}": [
-			"pretty-quick --staged"
-		]
-	},
 	"devDependencies": {
-		"babel-eslint": "^10.1.0",
-		"husky": "^4.2.5",
-		"lint-staged": "^10.2.11",
-		"prettier": "^2.0.5",
-		"pretty-quick": "^2.0.1",
 		"react-test-renderer": "^16.4.2",
-		"redux-multi": "^0.1.12",
-		"stylelint-config-standard": "^20.0.0"
+		"redux-multi": "^0.1.12"
 	}
 }
