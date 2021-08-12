@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import Menu from '../components/utils/Menu'
+import Menu from '../../components/utils/Menu'
 
-class Dashboard extends Component {
+class Home extends Component {
   render () {
     return (
       <div>
@@ -14,4 +14,4 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard
+export default Home

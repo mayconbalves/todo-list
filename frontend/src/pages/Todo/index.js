@@ -1,14 +1,12 @@
-/* eslint-disable react/no-access-state-in-setstate */
-/* eslint-disable react/forbid-prop-types */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as todoActions from '../actions/todo'
+import * as todoActions from '../../actions/todo'
 
-import Menu from '../components/utils/Menu'
-import TodoForm from '../components/todo/Form'
-import TodoList from '../components/todo/List'
+import Menu from '../../components/utils/Menu'
+import TodoForm from '../../components/todo/Form'
+import TodoList from '../../components/todo/List'
 
 class Todo extends Component {
 	constructor(props) {
