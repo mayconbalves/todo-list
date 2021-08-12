@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
-import Dashboard from './containers/Dashboard'
-import Todo from './containers/Todo'
+import Dashboard from './pages/Dashboard'
+import Todo from './pages/Todo'
 
 const Root = ({ store }) => (
   <Provider store={store}>
