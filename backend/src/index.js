@@ -6,7 +6,7 @@ const cors = require('cors')
 const app = express()
 const todo = require('./routes/todo.router') // Imports routes for the products
 
-const mongoDB = process.env.MONGODB_URI
+const mongoDB = process.env.MONGODB_URI || ''
 
 mongoose.connect(mongoDB, {
   useNewUrlParser : true
@@ -20,7 +20,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(cors())
 
-// baseUrl:  http://localhost:8080/products/
+// baseUrl:  http://localhost:8080/todos/
 app.use('/todos', todo)
 
 const port = 8080
