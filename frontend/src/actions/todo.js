@@ -1,4 +1,3 @@
-import axios from 'axios'
 import {
 	ADD_TODO_SUCCESS,
 	ADD_TODO_ERROR,
@@ -11,7 +10,8 @@ import {
 	PENDING_TODO_SUCCESS,
 	PENDING_TODO_ERROR
 } from '../constants/actionTypes'
-import API from '../constants/api'
+
+import api from '../api'
 
 const todoListSuccess = (data) => ({
 	type: TODO_LIST_SUCCESS,
@@ -23,8 +23,8 @@ const todoListError = (error) => ({
 	payload: error
 })
 export const fetchTodoList = () => (dispatch) => {
-	axios
-		.get(`${API.URL}/list`)
+	api
+		.get('list')
 		.then((response) => dispatch(todoListSuccess(response.data, dispatch)))
 		.catch((error) => dispatch(todoListError(error)))
 }
@@ -40,8 +40,8 @@ const addTodoError = (error) => ({
 })
 
 export const fetchAddTodo = (description) => (dispatch) => {
-	axios
-		.post(`${API.URL}/create`, { description, done: false })
+	api
+		.post('create', { description, done: false })
 		.then((respomse) => dispatch(addTodoSuccess(respomse.data, dispatch)))
 		.catch((error) => dispatch(addTodoError(error)))
 		.then(() => dispatch(fetchTodoList()))
@@ -58,8 +58,8 @@ const deleteTodoError = (error) => ({
 })
 
 export const fetchDeleteTodo = (_id) => (dispatch) => {
-	axios
-		.delete(`${API.URL}/${_id}/delete`)
+	api
+		.delete(`${_id}/delete`)
 		.then((response) => dispatch(deleteTodoSuccess(response.data)))
 		.catch((error) => dispatch(deleteTodoError(error)))
 		.then(() => dispatch(fetchTodoList()))
@@ -77,8 +77,8 @@ const doneTodoError = (error) => ({
 
 export const fetchDoneTodo = (list) => (dispatch) => {
 	const { _id } = list
-	axios
-		.put(`${API.URL}/${_id}/update`, { done: true })
+	api
+		.put(`${_id}/update`, { done: true })
 		.then((response) => dispatch(doneTodoSuccess(response.data)))
 		.catch((error) => dispatch(doneTodoError(error)))
 		.then(() => dispatch(fetchTodoList()))
@@ -95,8 +95,8 @@ const pendingTodoError = (error) => ({
 })
 export const fetchPendingTodo = (list) => (dispatch) => {
 	const { _id } = list
-	axios
-		.put(`${API.URL}/${_id}/update`, { done: false })
+	api
+		.put(`${_id}/update`, { done: false })
 		.then((response) => dispatch(pendingTodoSuccess(response.data)))
 		.catch((error) => dispatch(pendingTodoError(error)))
 		.then(() => dispatch(fetchTodoList()))
