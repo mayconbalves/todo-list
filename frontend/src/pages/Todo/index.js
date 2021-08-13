@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as todoActions from '../../actions/todo'
 
-import Menu from '../../components/utils/Menu'
+import Navbar from '../../components/Navbar'
 import TodoForm from '../../components/todo/Form'
 import TodoList from '../../components/todo/List'
 
@@ -42,7 +42,7 @@ class Todo extends Component {
 		const list = description || []
 		return (
 			<main>
-				<Menu />
+				<Navbar />
 				<div className='container'>
 					<h1 className='margin-top'>Tarefas</h1>
 					<TodoForm

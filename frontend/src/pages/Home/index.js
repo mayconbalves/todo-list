@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import Menu from '../../components/utils/Menu'
+import Navbar from '../../components/Navbar'
 
 class Home extends Component {
   render () {
     return (
       <div>
-        <Menu />
+        <Navbar />
         <div className='container'>
           <h1>Crie suas Tarefas</h1>
         </div>
