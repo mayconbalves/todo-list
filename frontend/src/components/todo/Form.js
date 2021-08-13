@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Col from '../utils/Col'
 
 class TodoForm extends Component {
   constructor (props) {
@@ -28,7 +27,7 @@ class TodoForm extends Component {
       <form>
         <div className='container margin-top-double'>
           <div className='row'>
-            <Col className='col-6'>
+            <div className='col-6'>
               <input
                 id='description'
                 className='form-control'
@@ -36,8 +35,8 @@ class TodoForm extends Component {
                 placeholder='Adicione uma tarefa'
                 value={description}
               />
-            </Col>
-            <Col className='col-4'>
+            </div>
+            <div className='col-4'>
               <button
                 type='button'
                 className='btn btn-primary'
@@ -45,7 +44,7 @@ class TodoForm extends Component {
                 onClick={this.handleConfirm}>
                 +
               </button>
-            </Col>
+            </div>
           </div>
         </div>
       </form>
