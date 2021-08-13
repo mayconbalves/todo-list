@@ -16,7 +16,7 @@ const TodoRow = ({ list, item, handleDelete, handleDone, handlePending }) => {
       <td>
         <button
           type='button'
-          className='btn btn-danger btn-margin'
+          className='btn btn-danger'
           onClick={() => handleDelete(list._id)}>
             Apagar
         </button>
@@ -25,7 +25,7 @@ const TodoRow = ({ list, item, handleDelete, handleDone, handlePending }) => {
           list.done === true &&
           <button
             type='button'
-            className='btn btn-success btn-margin text-collapse'
+            className='btn btn-success text-collapse'
             onClick={() => handleDone(list)}>
               Pronto
           </button>
