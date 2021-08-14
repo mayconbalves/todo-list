@@ -9,78 +9,74 @@ import TodoForm from '../../components/todo/Form'
 import TodoList from '../../components/todo/List'
 
 class Todo extends Component {
-	constructor(props) {
-		super(props)
+  constructor(props) {
+    super(props)
 
-		this.state = { description: '' }
-	}
+    this.state = { description: '' }
+  }
 
-	componentDidMount() {
-		this.handleTodoList()
-	}
+  componentDidMount() {
+    this.handleTodoList()
+  }
 
-	handleTodoList = () => this.props.fetchTodoList()
+  handleTodoList = () => this.props.fetchTodoList()
 
-	handleChange = (event) =>
-		this.setState({ ...this.state, description: event.target.value })
+  handleChange = (event) =>
+    this.setState({ ...this.state, description: event.target.value })
 
-	handleAdd = (description) => this.props.fetchAddTodo(description)
+  handleAdd = (description) => this.props.fetchAddTodo(description)
 
-	handleDelete = (list) => this.props.fetchDeleteTodo(list)
+  handleDelete = (list) => this.props.fetchDeleteTodo(list)
 
-	handleDone = (list) => {
-		const { fetchDoneTodo } = this.props
-		const { description } = this.state
+  handleDone = (list) => {
+    const { fetchDoneTodo } = this.props
+    const { description } = this.state
 
-		fetchDoneTodo(list, description)
-	}
+    fetchDoneTodo(list, description)
+  }
 
-	handlePending = (list) => this.props.fetchPendingTodo(list)
+  handlePending = (list) => this.props.fetchPendingTodo(list)
 
-	render() {
-		const { description } = this.props
-		const list = description || []
-		return (
-			<main>
-				<Navbar />
-				<div className='container'>
-					<h1 className='margin-top'>Tarefas</h1>
-					<TodoForm
-						description={list}
-						handleAdd={this.handleAdd}
-						handleChange={this.handleChange}
-					/>
+  render() {
+    const { description } = this.props
+    const list = description || []
+    return (
+      <main>
+        <Navbar />
+        <div className="container">
+          <h1 className="margin-top">Tarefas</h1>
+          <TodoForm
+            description={list}
+            handleAdd={this.handleAdd}
+            handleChange={this.handleChange}
+          />
 
-					<TodoList
-						list={list}
-						handleDelete={this.handleDelete}
-						handleDone={this.handleDone}
-						handlePending={this.handlePending}
-					/>
-				</div>
-			</main>
-		)
-	}
+          <TodoList
+            list={list}
+            handleDelete={this.handleDelete}
+            handleDone={this.handleDone}
+            handlePending={this.handlePending}
+          />
+        </div>
+      </main>
+    )
+  }
 }
 
 Todo.propTypes = {
-	fetchTodoList: PropTypes.func.isRequired,
-	fetchAddTodo: PropTypes.func.isRequired,
-	fetchDeleteTodo: PropTypes.func.isRequired,
-	fetchDoneTodo: PropTypes.func.isRequired,
-	fetchPendingTodo: PropTypes.func.isRequired,
-	description: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.string
-  ]),
+  fetchTodoList: PropTypes.func.isRequired,
+  fetchAddTodo: PropTypes.func.isRequired,
+  fetchDeleteTodo: PropTypes.func.isRequired,
+  fetchDoneTodo: PropTypes.func.isRequired,
+  fetchPendingTodo: PropTypes.func.isRequired,
+  description: PropTypes.oneOfType([PropTypes.array, PropTypes.string])
 }
 
 const mapStateToProps = ({ todoReducer }) => ({
-	description: todoReducer.description,
+  description: todoReducer.description
 })
 
-const mapDispatchToProps = (dispatch) => {
-	return bindActionCreators(todoActions, dispatch)
-}
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators(todoActions, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Todo)

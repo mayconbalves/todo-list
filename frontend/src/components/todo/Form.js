@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 class TodoForm extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = { description: '' }
   }
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({ description: event.target.value })
   }
 
@@ -20,28 +20,29 @@ class TodoForm extends Component {
     this.setState({ description: '' })
   }
 
-  render () {
+  render() {
     const { description } = this.state
 
     return (
       <form>
-        <div className='container margin-top-double'>
-          <div className='row'>
-            <div className='col-6'>
+        <div className="container margin-top-double">
+          <div className="row">
+            <div className="col-6">
               <input
-                id='description'
-                className='form-control'
+                id="description"
+                className="form-control"
                 onChange={this.handleChange}
-                placeholder='Adicione uma tarefa'
+                placeholder="Adicione uma tarefa"
                 value={description}
               />
             </div>
-            <div className='col-4'>
+            <div className="col-4">
               <button
-                type='button'
-                className='btn btn-primary'
+                type="button"
+                className="btn btn-primary"
                 disabled={!description}
-                onClick={this.handleConfirm}>
+                onClick={this.handleConfirm}
+              >
                 +
               </button>
             </div>

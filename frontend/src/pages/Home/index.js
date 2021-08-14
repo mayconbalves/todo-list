@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import Navbar from '../../components/Navbar'
 
 class Home extends Component {
-  render () {
+  render() {
     return (
       <div>
         <Navbar />
-        <div className='container'>
+        <div className="container">
           <h1>Crie suas Tarefas</h1>
         </div>
       </div>

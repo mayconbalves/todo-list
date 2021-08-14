@@ -3,34 +3,26 @@ import PropTypes from 'prop-types'
 import Row from './Row'
 
 const TodoList = ({ list, handleDelete, handleDone, handlePending }) => {
-  const renderTodoList = (list, item) => {
-    return (
-      <Row
-        key={item}
-        list={list}
-        item={item}
-        handleDelete={handleDelete}
-        handleDone={handleDone}
-        handlePending={handlePending}
-      />
-    )
-  }
+  const renderTodoList = (list, item) => (
+    <Row
+      key={item}
+      list={list}
+      item={item}
+      handleDelete={handleDelete}
+      handleDone={handleDone}
+      handlePending={handlePending}
+    />
+  )
 
   return (
-    <table className='table margin-top-double container'>
+    <table className="table margin-top-double container">
       <thead>
         <tr>
-          <th>
-            Descrição
-          </th>
-          <th className='fixe-width'>
-            Ação
-          </th>
+          <th>Descrição</th>
+          <th className="fixe-width">Ação</th>
         </tr>
       </thead>
-      <tbody>
-        {list.map(renderTodoList)}
-      </tbody>
+      <tbody>{list.map(renderTodoList)}</tbody>
     </table>
   )
 }
