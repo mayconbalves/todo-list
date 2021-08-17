@@ -3,9 +3,7 @@ import PropTypes from 'prop-types'
 
 const TodoRow = ({ list, item, handleDelete, handleDone, handlePending }) => (
   <tr className="clickable" id={item} key={item}>
-    {list.done === true && (
-      <td className="align-center text-through">{list.description}</td>
-    )}
+    {list.done === true && <td className="align-center">{list.description}</td>}
 
     {list.done === false && (
       <td className="align-center">{list.description}</td>
@@ -22,7 +20,7 @@ const TodoRow = ({ list, item, handleDelete, handleDone, handlePending }) => (
       {list.done === true && (
         <button
           type="button"
-          className="btn btn-success text-collapse"
+          className="btn btn-success"
           onClick={() => handleDone(list)}
         >
           Pronto
