@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as todoActions from '../../actions/todo'
+import * as todoActions from './actions'
 
 import Navbar from '../../components/Navbar'
 import TodoForm from '../../components/todo/Form'

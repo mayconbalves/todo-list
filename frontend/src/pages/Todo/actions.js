@@ -9,9 +9,9 @@ import {
   DONE_TODO_ERROR,
   PENDING_TODO_SUCCESS,
   PENDING_TODO_ERROR
-} from '../constants/actionTypes'
+} from '../../constants/actionTypes'
 
-import api from '../api'
+import api from '../../api'
 
 const todoListSuccess = (data) => ({
   type: TODO_LIST_SUCCESS,
