@@ -25,7 +25,7 @@ class TodoForm extends Component {
 
     return (
       <form>
-        <div className="container margin-top-double">
+        <div className="container">
           <div className="row">
             <div className="col-6">
               <input

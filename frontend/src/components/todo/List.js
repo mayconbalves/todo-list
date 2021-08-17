@@ -19,7 +19,7 @@ const TodoList = ({ list, handleDelete, handleDone, handlePending }) => {
       <thead>
         <tr>
           <th>Descrição</th>
-          <th className="fixe-width">Ação</th>
+          <th>Ação</th>
         </tr>
       </thead>
       <tbody>{list.map(renderTodoList)}</tbody>
